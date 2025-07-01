@@ -25,22 +25,19 @@ const commands16BitTail = [];
             opcodeMap[mnemonic] = hex;
             reverseOpcodeMap[hex] = mnemonic;
         }
-        // console.log(opcodeMap);
-        // console.log(reverseOpcodeMap);
-        console.log("Загрузка opcodeMap завершена");
 
         for (cmd in opcodeMap) {
             parts = cmd.split(' ');
             if (cmd.includes('d8')) {
                 commands8BitTail.push(parts[0]);
             }
-            if (cmd.includes('a16')) {
+            if (cmd.includes('a16') || cmd.includes('d16')) {
                 commands16BitTail.push(parts[0]);
             }
         }
 
-        console.log(commands8BitTail);
-        console.log(commands16BitTail);
+        // console.log(commands8BitTail);
+        // console.log(commands16BitTail);
     } catch (error) {
         console.error("Ошибка при загрузке opcodeMap:", error);
     }
